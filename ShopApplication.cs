@@ -116,32 +116,51 @@ namespace Invoicing_System_on_Console
 
         private void AddItems()
         {
-            Console.WriteLine("Enter the Item ID : ");
-            int itemID = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the Item Name : ");
-            string itemName = Console.ReadLine();
-            Console.WriteLine("Enter the Item Price : ");
-            decimal ItemPrice = decimal.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("Enter the Item ID : ");
+                int itemID = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the Item Name : ");
+                string itemName = Console.ReadLine();
+                Console.WriteLine("Enter the Item Price : ");
+                decimal ItemPrice = decimal.Parse(Console.ReadLine());
 
-            //adding new items to the constructor
-            var newitem = new SingleItem(itemID,itemName, ItemPrice);
-            // adding this items to the list of items in the shop class
-            shop.Items.Add(newitem);
-            SaveData();
-            Console.WriteLine("The item added successfully");
+                //adding new items to the constructor
+                var newitem = new SingleItem(itemID, itemName, ItemPrice);
+                // adding this items to the list of items in the shop class
+                shop.Items.Add(newitem);
+                SaveData();
+                Console.WriteLine("The item added successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Invalid input exceptions"+ex.Message);
+            }
         }
 
         private void DeleteItems()
         {
-            Console.WriteLine("Enter the item ID that you want to be delete:");
-            int itemID = int.Parse(Console.ReadLine());
-
-            var RemovingItem = shop.Items.Find(x=> x.ItemID == itemID);
-            if( RemovingItem != null )
+            try
             {
-                shop.Items.Remove(RemovingItem);
-                SaveData() ;
-                Console.WriteLine("The item removed successfully");
+                Console.WriteLine("Enter the item ID that you want to be delete:");
+                int itemID = int.Parse(Console.ReadLine());
+                // search for the item in the items list in shop class
+                var RemovingItem = shop.Items.Find(x => x.ItemID == itemID);
+                if (RemovingItem != null)
+                {
+                    //if the items that need to deleted found then delet it
+                    shop.Items.Remove(RemovingItem);
+                    SaveData();
+                    Console.WriteLine("The item removed successfully");
+                }
+                else
+                {
+                    Console.WriteLine("The items not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Invalid input exception"+ex.Message);
             }
         }
     }
