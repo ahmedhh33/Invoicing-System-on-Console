@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Invoicing_System_on_Console
 {
-    internal class Shop
+    // creating Shop class 
+    public class Shop
     {
+        public string ShopName { get; set; }
+        public string InvoiceHeader { get; set; }
+        public List<SingleItem> Items { get; set; }
+        public List<Invoice> Invoices { get; set; }
+
     }
 }

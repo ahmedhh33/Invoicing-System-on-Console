@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Invoicing_System_on_Console
 {
-    internal class SingleItem
+    //this class represint single items to use them in shop class
+    public class SingleItem
     {
+        public int ItemID { get; set; }
+        public string ItemName { get; set; }
+        public decimal UnitPrice { get; set; }
     }
 }

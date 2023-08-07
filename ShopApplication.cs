@@ -99,5 +99,16 @@ namespace Invoicing_System_on_Console
             shop.InvoiceHeader = Console.ReadLine();
             SaveData();
         }
+        private int GetMenuChoice(int Maximumchoice)
+        {
+            Console.WriteLine("What functions you want?");
+            Console.WriteLine("Please inter your choice");
+            int choice;
+            while(!int.TryParse(Console.ReadLine(), out choice)|| choice <1 || choice>Maximumchoice)
+            {
+                Console.WriteLine("You Entered invalid choice number!.");
+            }
+            return choice;
+        }
     }
 }
