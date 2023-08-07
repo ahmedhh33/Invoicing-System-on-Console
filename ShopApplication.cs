@@ -114,7 +114,7 @@ namespace Invoicing_System_on_Console
             return userchoice;
         }
 
-        private void AddingItems()
+        private void AddItems()
         {
             Console.WriteLine("Enter the Item ID : ");
             int itemID = int.Parse(Console.ReadLine());
@@ -128,6 +128,21 @@ namespace Invoicing_System_on_Console
             // adding this items to the list of items in the shop class
             shop.Items.Add(newitem);
             SaveData();
+            Console.WriteLine("The item added successfully");
+        }
+
+        private void DeleteItems()
+        {
+            Console.WriteLine("Enter the item ID that you want to be delete:");
+            int itemID = int.Parse(Console.ReadLine());
+
+            var RemovingItem = shop.Items.Find(x=> x.ItemID == itemID);
+            if( RemovingItem != null )
+            {
+                shop.Items.Remove(RemovingItem);
+                SaveData() ;
+                Console.WriteLine("The item removed successfully");
+            }
         }
     }
 }
