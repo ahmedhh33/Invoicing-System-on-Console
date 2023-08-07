@@ -12,5 +12,12 @@ namespace Invoicing_System_on_Console
         public int ItemID { get; set; }
         public string ItemName { get; set; }
         public decimal UnitPrice { get; set; }
+
+        public SingleItem(int itemId, string itemName, decimal itemPrice) 
+        { 
+            this.ItemID = itemId;
+            this.ItemName = itemName;
+            this.UnitPrice = itemPrice;
+        }
     }
 }
