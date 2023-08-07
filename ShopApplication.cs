@@ -113,5 +113,21 @@ namespace Invoicing_System_on_Console
             }
             return userchoice;
         }
+
+        private void AddingItems()
+        {
+            Console.WriteLine("Enter the Item ID : ");
+            int itemID = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Item Name : ");
+            string itemName = Console.ReadLine();
+            Console.WriteLine("Enter the Item Price : ");
+            decimal ItemPrice = decimal.Parse(Console.ReadLine());
+
+            //adding new items to the constructor
+            var newitem = new SingleItem(itemID,itemName, ItemPrice);
+            // adding this items to the list of items in the shop class
+            shop.Items.Add(newitem);
+            SaveData();
+        }
     }
 }
