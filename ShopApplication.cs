@@ -47,6 +47,7 @@ namespace Invoicing_System_on_Console
                             ManageShopItemsMenu();
                             break;
                         case 3:
+                            CreatNewInvoice();
                             break;
                         case 4:
                             break;
@@ -319,14 +320,14 @@ namespace Invoicing_System_on_Console
                 //entering the item id
                 int itemID = int.Parse(Console.ReadLine());
 
-                if(itemID == 0) { break; }
+                if (itemID == 0) { break; }
                 //searshing for this item in items list of th shop class to find it is informations
                 var itemOnShop = shop.Items.Find(x => x.ItemID == itemID);
-                if(itemOnShop == null) 
+                if (itemOnShop == null)
                 {
-                    Console.WriteLine("This item is not regestered"); 
+                    Console.WriteLine("This item is not regestered");
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Enter the Quantity of this item : ");
                     int itemQuantity = int.Parse(Console.ReadLine());
@@ -342,11 +343,20 @@ namespace Invoicing_System_on_Console
                     SaveData();
 
                     Console.WriteLine($"invoice with number {Invicenumber} is created successfully");
-                     
+
                 }
             }
+        }
 
+        private void ReportStatics()
+        {
+            int NumberOfItems = shop.Items.Count;
+            int NumberOfInvoice = shop.Invoices.Count;
+            decimal TotalSales = shop.Invoices.Sum(x=>x.TotalAmount);
 
+            Console.WriteLine($"Number of items avaliable => {NumberOfItems}");
+            Console.WriteLine($"Number of Invoice Created => {NumberOfInvoice}");
+            Console.WriteLine($"Total of profits fromsails => {TotalSales} OMR");
 
         }
 

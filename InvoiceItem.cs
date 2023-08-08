@@ -14,5 +14,13 @@ namespace Invoicing_System_on_Console
         public decimal UnitPrice { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice => UnitPrice * Quantity;
+
+        public InvoiceItem(int ItemID, string ItemName, decimal UnitPrice, int Quantity) 
+        {
+            this.ItemID = ItemID;
+            this.ItemName = ItemName;
+            this.UnitPrice = UnitPrice;
+            this.Quantity = Quantity;
+        }
     }
 }
