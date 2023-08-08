@@ -313,7 +313,42 @@ namespace Invoicing_System_on_Console
 
             var CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
 
+            Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish):");
+            while (true)
+            {
+                //entering the item id
+                int itemID = int.Parse(Console.ReadLine());
+
+                if(itemID == 0) { break; }
+                //searshing for this item in items list of th shop class to find it is informations
+                var itemOnShop = shop.Items.Find(x => x.ItemID == itemID);
+                if(itemOnShop == null) 
+                {
+                    Console.WriteLine("This item is not regestered"); 
+                }
+                else 
+                {
+                    Console.WriteLine("Enter the Quantity of this item : ");
+                    int itemQuantity = int.Parse(Console.ReadLine());
+                    //creating object of invoice items class and thake the information of this from shope item class using shop.find
+                    var invoiceitems = new InvoiceItem(itemOnShop.ItemID, itemOnShop.ItemName, itemOnShop.UnitPrice, itemQuantity);
+                    // now add this new information to invoice class
+                    //by taking invoice item object and added to list items in the invoice class
+                    CreatingInvoice.Items.Add(invoiceitems);
+
+                    Console.WriteLine("Enter the Paid amount : ");
+                    decimal paidamount = decimal.Parse(Console.ReadLine());
+
+                    SaveData();
+
+                    Console.WriteLine($"invoice with number {Invicenumber} is created successfully");
+                     
+                }
+            }
+
+
+
         }
-        
+
     }
 }
