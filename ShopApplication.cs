@@ -163,5 +163,32 @@ namespace Invoicing_System_on_Console
                 Console.WriteLine("Invalid input exception"+ex.Message);
             }
         }
+
+        private void ChangeItemPrice()
+        {
+            try
+            {
+                Console.WriteLine("Please enter the ID of items that you want to change its price: ");
+                int itemID = int.Parse(Console.ReadLine());
+
+                var changedItem = shop.Items.Find(x => x.ItemID == itemID);
+                if (changedItem != null)
+                {
+                    Console.WriteLine("Enter the new item price :");
+                    decimal newprice = decimal.Parse(Console.ReadLine());
+                    changedItem.UnitPrice = newprice;
+                    SaveData();
+                    Console.WriteLine("item price updated succesfuly");
+                }
+                else
+                {
+                    Console.WriteLine("the item not found!");
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error happened due to wrong input "+ex.Message);
+            }
+        }
     }
 }
