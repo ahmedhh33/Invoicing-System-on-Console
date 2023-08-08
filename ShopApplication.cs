@@ -22,6 +22,7 @@ namespace Invoicing_System_on_Console
 
         public void ApplicationMainMenu()
         {
+            Console.WriteLine("-|-|-|-|-|-|- Application Main Menu -|-|-|-|-|-|-");
             while (true)
             {
                 Menu.Show(new string[] 
@@ -35,40 +36,51 @@ namespace Invoicing_System_on_Console
                     "Program Statistics ",
                     "Exit"
                 });
-                int choice =GetMenuChoice(8);
-                switch (choice)
-                {
-                    case 1:
-                        ShopSettingsMenu();
-                        break;
-                    case 2:
-                        ManageShopItemsMenu();
-                    break;
-                    case 3:
-                        break; 
-                    case 4:
-                        break;
-                    case 5 : 
-                        break;
-                    case 6 :
-                        break;
-                    case 7 : 
-                        break;
-                    case 8 :
+                
+                    int choice = GetMenuChoice(8);
+                    switch (choice)
+                    {
+                        case 1:
+                            ShopSettingsMenu();
+                            break;
+                        case 2:
+                            ManageShopItemsMenu();
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
                         Console.WriteLine("Are you sure you want to exit? (Y/N)");
                         string response = Console.ReadLine().ToUpper();
                         if (response == "Y")
                         {
                             Environment.Exit(0);
                         }
+                        else if (response == "N")
+                        {
+                            ApplicationMainMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You intered invalid choice");
+                        }
                         return;
 
-                }
+                    }
+                
             }
         }
 
         private void ShopSettingsMenu()
         {
+            Console.WriteLine("-|-|-|-|-|-|- Shop Settings Menu -|-|-|-|-|-|-");
             while (true)
             {
                 Menu.Show(new string[]
@@ -170,7 +182,8 @@ namespace Invoicing_System_on_Console
         }
         private void ManageShopItemsMenu()
         {
-            while(true)
+            Console.WriteLine("-|-|-|-|-|-|- Manage Shop Items Menu -|-|-|-|-|-|-");
+            while (true)
             {
                 Menu.Show(new string[] 
                 {
@@ -288,5 +301,6 @@ namespace Invoicing_System_on_Console
                 Console.WriteLine($"Item ID : {item.ItemID} Item Name : {item.ItemName} Item price : {item.UnitPrice}");
             }
         }
+        
     }
 }
