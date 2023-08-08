@@ -113,6 +113,39 @@ namespace Invoicing_System_on_Console
             }
             return userchoice;
         }
+        private void ManageShopItems()
+        {
+            while(true)
+            {
+                Menu.Show(new string[] 
+                {
+                    "Add Items",
+                    "Delete Items",
+                    "Change Item Price",
+                    "Report All Items",
+                    "Go Back"
+                });
+            }
+            int choice = GetMenuChoice(5);
+            switch (choice)
+            {
+                case 1:
+                    AddItems();
+                break;
+                case 2:
+                    DeleteItems();
+                break;
+                case 3:
+                    ChangeItemPrice();
+                break;
+                case 4:
+                    ReportAllItems();
+                break;
+                case 5:
+                    return;
+
+            }
+        }
 
         private void AddItems()
         {
