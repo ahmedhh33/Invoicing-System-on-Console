@@ -301,6 +301,19 @@ namespace Invoicing_System_on_Console
                 Console.WriteLine($"Item ID : {item.ItemID} Item Name : {item.ItemName} Item price : {item.UnitPrice}");
             }
         }
+
+        private void CreatNewInvoice()
+        {
+            Console.WriteLine("Please enter custumer full name :");
+            string CustumerName = Console.ReadLine();
+            Console.WriteLine("Please enter custumer Phone number :");
+            string CustumerPhone = Console.ReadLine();
+            Console.WriteLine("Enter the InvoiceNumber");
+            string Invicenumber = Console.ReadLine();
+
+            var CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
+
+        }
         
     }
 }
