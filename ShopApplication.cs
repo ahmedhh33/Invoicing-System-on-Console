@@ -190,5 +190,14 @@ namespace Invoicing_System_on_Console
                 Console.WriteLine("Error happened due to wrong input "+ex.Message);
             }
         }
+
+        private void ReportAllItems()
+        {
+            Console.WriteLine("-|-|-|-|- All shop items -|-|-|-|-  ");
+            foreach (var item in shop.Items)
+            {
+                Console.WriteLine($"Item ID : {item.ItemID} Item Name : {item.ItemName} Item price : {item.UnitPrice}");
+            }
+        }
     }
 }
