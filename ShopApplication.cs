@@ -19,6 +19,54 @@ namespace Invoicing_System_on_Console
             //the data needs to be loaded from a storage medium (JSON file) before the application starts.
             LoadData();
         }
+
+        public void ApplicationMainMenu()
+        {
+            while (true)
+            {
+                Menu.Show(new string[] 
+                {
+                    "Shop Setting",
+                    "Manage Shop Items",
+                    "Creat New Invoice",
+                    "Report: Statistics ",
+                    "Report: All Invoices ",
+                    "Search (1) Invoice ",
+                    "Program Statistics ",
+                    "Exit"
+                });
+                int choice =GetMenuChoice(8);
+                switch (choice)
+                {
+                    case 1:
+                        ShopSettingsMenu();
+                        break;
+                    case 2:
+                        ManageShopItemsMenu();
+                    break;
+                    case 3:
+                        break; 
+                    case 4:
+                        break;
+                    case 5 : 
+                        break;
+                    case 6 :
+                        break;
+                    case 7 : 
+                        break;
+                    case 8 :
+                        Console.WriteLine("Are you sure you want to exit? (Y/N)");
+                        string response = Console.ReadLine().ToUpper();
+                        if (response == "Y")
+                        {
+                            Environment.Exit(0);
+                        }
+                        return;
+
+                }
+            }
+        }
+
         private void ShopSettingsMenu()
         {
             while (true)
@@ -45,6 +93,9 @@ namespace Invoicing_System_on_Console
                         break;
                     case 4:
                         return;
+                    //default:
+                    //    Console.WriteLine("Invalid choice. Please try again.");
+                    //    break;
                 }
             }
         }
@@ -106,14 +157,18 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("What functions you want?");
             Console.WriteLine("Please inter your choice");
             //int choice;
-            int userchoice = int.Parse(Console.ReadLine());
-            while( userchoice <1 || userchoice>Maximumchoice)
+            //int userchoice = int.Parse(Console.ReadLine());
+            //while( userchoice <1 || userchoice>Maximumchoice)
+            int choice ;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > Maximumchoice)
             {
-                Console.WriteLine("You Entered invalid choice number!.");
+                Console.WriteLine("You Entered invalid choice number! .");
+                Console.WriteLine("Please inter your choice again .");
+
             }
-            return userchoice;
+            return choice;
         }
-        private void ManageShopItems()
+        private void ManageShopItemsMenu()
         {
             while(true)
             {
@@ -125,26 +180,27 @@ namespace Invoicing_System_on_Console
                     "Report All Items",
                     "Go Back"
                 });
-            }
-            int choice = GetMenuChoice(5);
-            switch (choice)
-            {
-                case 1:
-                    AddItems();
-                break;
-                case 2:
-                    DeleteItems();
-                break;
-                case 3:
-                    ChangeItemPrice();
-                break;
-                case 4:
-                    ReportAllItems();
-                break;
-                case 5:
-                    return;
+                int choice = GetMenuChoice(5);
+                switch (choice)
+                {
+                    case 1:
+                        AddItems();
+                        break;
+                    case 2:
+                        DeleteItems();
+                        break;
+                    case 3:
+                        ChangeItemPrice();
+                        break;
+                    case 4:
+                        ReportAllItems();
+                        break;
+                    case 5:
+                        return;
 
+                }
             }
+            
         }
 
         private void AddItems()

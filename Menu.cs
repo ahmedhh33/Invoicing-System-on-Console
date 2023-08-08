@@ -12,9 +12,9 @@ namespace Invoicing_System_on_Console
         public static void Show(string[] menueArray)
         {
             Console.WriteLine("-|-|-|-|-|-|- Application Main Menu -|-|-|-|-|-|-");
-            for(int i = 1; i <= menueArray.Length; i++)
+            for(int i = 0; i < menueArray.Length; i++)
             {
-                Console.WriteLine($"{i} ===>>{menueArray[i]}");
+                Console.WriteLine($"{1+i} =>{menueArray[i]}");
             }
         }
     }

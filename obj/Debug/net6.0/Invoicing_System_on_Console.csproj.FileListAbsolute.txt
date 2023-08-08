@@ -1,0 +1,17 @@
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Invoicing_System_on_Console.exe
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Invoicing_System_on_Console.deps.json
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Invoicing_System_on_Console.runtimeconfig.json
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Invoicing_System_on_Console.dll
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Invoicing_System_on_Console.pdb
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.csproj.AssemblyReference.cache
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.AssemblyInfoInputs.cache
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.AssemblyInfo.cs
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.csproj.CoreCompileInputs.cache
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.csproj.CopyComplete
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.dll
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\refint\Invoicing_System_on_Console.dll
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.pdb
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\Invoicing_System_on_Console.genruntimeconfig.cache
+C:\Users\TRA\Desktop\TRA-Code\Invoicing_System_on_Console\obj\Debug\net6.0\ref\Invoicing_System_on_Console.dll

@@ -1,0 +1,12 @@
+{
+  "ShopName": "abuied",
+  "InvoiceHeader": "Tele: 22343238 / Email: Tilal_Abueid@gmail.com | Website: www.TilalAbueidGrocery.com",
+  "Items": [
+    {
+      "ItemID": 12,
+      "ItemName": "as",
+      "UnitPrice": 23.0
+    }
+  ],
+  "Invoices": []
+}
