@@ -16,7 +16,7 @@ namespace Invoicing_System_on_Console
         public List<InvoiceItem> Items { get; set; }
         public decimal TotalAmount => Items.Sum(item => item.TotalPrice);
         public decimal PaidAmount { set; get; }
-        public decimal Balance => TotalAmount - PaidAmount; 
+        public decimal Balance =>  PaidAmount- TotalAmount; 
 
        public Invoice(string InvoiceNumber, string CustomerFullName, string PhoneNumber, DateTime InvoiceDate, List<InvoiceItem> Items)
         { 

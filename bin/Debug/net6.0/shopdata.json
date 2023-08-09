@@ -1,12 +1,61 @@
 {
-  "ShopName": "abuied",
+  "ShopName": "Tilal Abuied For Groceries",
   "InvoiceHeader": "Tele: 22343238 / Email: Tilal_Abueid@gmail.com | Website: www.TilalAbueidGrocery.com",
   "Items": [
     {
       "ItemID": 12,
       "ItemName": "as",
       "UnitPrice": 23.0
+    },
+    {
+      "ItemID": 111,
+      "ItemName": "orange",
+      "UnitPrice": 6.0
+    },
+    {
+      "ItemID": 343,
+      "ItemName": "baking soda",
+      "UnitPrice": 3.0
     }
   ],
-  "Invoices": []
+  "Invoices": [
+    {
+      "InvoiceNumber": "21",
+      "CustomerFullName": "qwq",
+      "PhoneNumber": "2322",
+      "InvoiceDate": "2023-08-09T10:38:37.9055053+04:00",
+      "Items": [],
+      "TotalAmount": 0.0,
+      "PaidAmount": 0.0,
+      "Balance": 0.0
+    },
+    {
+      "InvoiceNumber": "89",
+      "CustomerFullName": "agmed",
+      "PhoneNumber": "9232234",
+      "InvoiceDate": "2023-08-09T10:51:48.6436601+04:00",
+      "Items": [],
+      "TotalAmount": 0.0,
+      "PaidAmount": 0.0,
+      "Balance": 0.0
+    },
+    {
+      "InvoiceNumber": "323",
+      "CustomerFullName": "saleh",
+      "PhoneNumber": "93435534",
+      "InvoiceDate": "2023-08-09T11:53:52.4974302+04:00",
+      "Items": [
+        {
+          "ItemID": 12,
+          "ItemName": "as",
+          "UnitPrice": 23.0,
+          "Quantity": 1,
+          "TotalPrice": 23.0
+        }
+      ],
+      "TotalAmount": 23.0,
+      "PaidAmount": 45.0,
+      "Balance": -22.0
+    }
+  ]
 }

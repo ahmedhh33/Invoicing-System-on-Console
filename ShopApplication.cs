@@ -13,6 +13,7 @@ namespace Invoicing_System_on_Console
     {
         private const string DATA_FILE = "shopdata.json";
         private Shop shop;
+        //private Invoice invoice;
 
         public ShopApplication() 
         {
@@ -50,8 +51,10 @@ namespace Invoicing_System_on_Console
                             CreatNewInvoice();
                             break;
                         case 4:
+                            ReportStatics();
                             break;
                         case 5:
+                            ReportAllInvoices();
                             break;
                         case 6:
                             break;
@@ -312,7 +315,7 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("Enter the InvoiceNumber");
             string Invicenumber = Console.ReadLine();
 
-            var CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
+            Invoice CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
 
             Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish):");
             while (true)
@@ -332,20 +335,23 @@ namespace Invoicing_System_on_Console
                     Console.WriteLine("Enter the Quantity of this item : ");
                     int itemQuantity = int.Parse(Console.ReadLine());
                     //creating object of invoice items class and thake the information of this from shope item class using shop.find
-                    var invoiceitems = new InvoiceItem(itemOnShop.ItemID, itemOnShop.ItemName, itemOnShop.UnitPrice, itemQuantity);
+                    InvoiceItem invoiceitems = new InvoiceItem(itemOnShop.ItemID, itemOnShop.ItemName, itemOnShop.UnitPrice, itemQuantity);
                     // now add this new information to invoice class
                     //by taking invoice item object and added to list items in the invoice class
+                    //invoice.Items.Add(invoiceitems);
+
                     CreatingInvoice.Items.Add(invoiceitems);
-
-                    Console.WriteLine("Enter the Paid amount : ");
-                    decimal paidamount = decimal.Parse(Console.ReadLine());
-
-                    SaveData();
-
-                    Console.WriteLine($"invoice with number {Invicenumber} is created successfully");
+                    Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish):");
 
                 }
             }
+            Console.WriteLine("Enter the Paid amount : ");
+            decimal paidamount = decimal.Parse(Console.ReadLine());
+            CreatingInvoice.PaidAmount = paidamount;
+            shop.Invoices.Add(CreatingInvoice);
+            SaveData();
+            Console.WriteLine($"invoice with number {Invicenumber} is created successfully");
+            
         }
 
         private void ReportStatics()
@@ -353,10 +359,24 @@ namespace Invoicing_System_on_Console
             int NumberOfItems = shop.Items.Count;
             int NumberOfInvoice = shop.Invoices.Count;
             decimal TotalSales = shop.Invoices.Sum(x=>x.TotalAmount);
+            //it will count first total price on invoiceitems class (UnitPrice * Quantity) for sam items
+            //then will sum all total item prices in that invoice totalamount = Items.Sum(item => item.TotalPrice)
+            //the it will sum all total amounts of all invoices created total sales = Invoices.Sum(x=>x.TotalAmount)
+            Console.WriteLine("===>>Report sttistic Information<<===");
 
             Console.WriteLine($"Number of items avaliable => {NumberOfItems}");
             Console.WriteLine($"Number of Invoice Created => {NumberOfInvoice}");
             Console.WriteLine($"Total of profits fromsails => {TotalSales} OMR");
+
+        }
+        private void ReportAllInvoices()
+        {
+            Console.WriteLine("===>>Report Invoices Information<<===");
+            Console.WriteLine("InvoiceNumber   InvoiceDate    CustomerName   NumberOfItems   TotalAmount  Balance");
+            foreach (var invoice in shop.Invoices)
+            {
+                Console.WriteLine($"{invoice.InvoiceNumber} {invoice.InvoiceDate}   {invoice.CustomerFullName}  {invoice.Items.Count}   {invoice.TotalAmount}   {invoice.Balance}");
+            }
 
         }
 
