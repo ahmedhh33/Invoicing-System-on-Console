@@ -3,11 +3,6 @@
   "InvoiceHeader": "Tele: 22343238 / Email: Tilal_Abueid@gmail.com | Website: www.TilalAbueidGrocery.com",
   "Items": [
     {
-      "ItemID": 12,
-      "ItemName": "as",
-      "UnitPrice": 23.0
-    },
-    {
       "ItemID": 111,
       "ItemName": "orange",
       "UnitPrice": 6.0
@@ -19,7 +14,6 @@
     }
   ],
   "Invoices": [
-    
     {
       "InvoiceNumber": "323",
       "CustomerFullName": "saleh",
@@ -36,7 +30,7 @@
       ],
       "TotalAmount": 23.0,
       "PaidAmount": 45.0,
-      "Balance": -22.0
+      "Balance": 22.0
     }
   ]
 }

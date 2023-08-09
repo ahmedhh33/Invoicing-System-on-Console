@@ -21,6 +21,8 @@ namespace Invoicing_System_on_Console
             LoadData();
         }
 
+        int[] MenuSelectionTimeS = new int[8];//number of main menu items array and it start from 0
+
         public void ApplicationMainMenu()
         {
             Console.WriteLine("-|-|-|-|-|-|- Application Main Menu -|-|-|-|-|-|-");
@@ -39,6 +41,7 @@ namespace Invoicing_System_on_Console
                 });
                 
                     int choice = GetMenuChoice(8);
+                MenuSelectionTimeS[choice - 1]++; //the choices starts from 1 and the array index starts from 0 we substract it ind make it idded each time it will run 
                     switch (choice)
                     {
                         case 1:
@@ -60,6 +63,7 @@ namespace Invoicing_System_on_Console
                             SerachForInvoice();
                             break;
                         case 7:
+                            ProgramStatics();
                             break;
                         case 8:
                         Console.Write("Are you sure you want to exit? (Y/N)   ");
@@ -390,6 +394,8 @@ namespace Invoicing_System_on_Console
 
         private void SerachForInvoice()
         {
+            Console.WriteLine("===>>Serach For Invoice<<===");
+
             Console.WriteLine("Enter the Invoice Number to show it is details");
             string InvoiceNumberInput = Console.ReadLine();
 
@@ -406,6 +412,17 @@ namespace Invoicing_System_on_Console
             else
             {
                 Console.WriteLine($"The item with number {InvoiceNumberInput}");
+            }
+        }
+
+        private void ProgramStatics()
+        {
+            Console.WriteLine("===>>Program Statics<<===");
+
+            Console.WriteLine("Program Statistics:");
+            for (int i = 0; i < MenuSelectionTimeS.Length; i++)
+            {
+                Console.WriteLine($"Menu Option {i + 1}: {MenuSelectionTimeS[i]} times selected");
             }
         }
 
