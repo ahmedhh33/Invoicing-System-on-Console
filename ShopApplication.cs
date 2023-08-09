@@ -20,6 +20,7 @@ namespace Invoicing_System_on_Console
             //the data needs to be loaded from a storage medium (JSON file) before the application starts.
             LoadData();
         }
+        Menu Menu = new Menu();
 
         int[] MenuSelectionTimeS = new int[8];//number of main menu items array and it start from 0
 
@@ -28,17 +29,7 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("-|-|-|-|-|-|- Application Main Menu -|-|-|-|-|-|-");
             while (true)
             {
-                Menu.Show(new string[] 
-                {
-                    "Shop Setting",
-                    "Manage Shop Items",
-                    "Creat New Invoice",
-                    "Report: Statistics ",
-                    "Report: All Invoices ",
-                    "Search (1) Invoice ",
-                    "Program Statistics ",
-                    "Exit"
-                });
+                Menu.Show(Menu.ApplicationMainMenue);
                 
                     int choice = GetMenuChoice(8);
                 MenuSelectionTimeS[choice - 1]++; //the choices starts from 1 and the array index starts from 0 we substract it ind make it idded each time it will run 
@@ -92,13 +83,7 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("-|-|-|-|-|-|- Shop Settings Menu -|-|-|-|-|-|-");
             while (true)
             {
-                Menu.Show(new string[]
-                {
-                "Load Data (Items and invoices)",
-                "Set Shop Name",
-                "Set Invoice Header (Tel / Fax / Email / Website)",
-                "Go Back"
-                });
+                Menu.Show(Menu.ShopSettingMenue);
 
                 int choice = GetMenuChoice(4);
                 switch (choice)
@@ -195,14 +180,7 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("-|-|-|-|-|-|- Manage Shop Items Menu -|-|-|-|-|-|-");
             while (true)
             {
-                Menu.Show(new string[] 
-                {
-                    "Add Items",
-                    "Delete Items",
-                    "Change Item Price",
-                    "Report All Items",
-                    "Go Back"
-                });
+                Menu.Show(Menu.ManageShopItemsMenue);
                 int choice = GetMenuChoice(5);
                 switch (choice)
                 {
@@ -422,7 +400,7 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("Program Statistics:");
             for (int i = 0; i < MenuSelectionTimeS.Length; i++)
             {
-                Console.WriteLine($"Menu Option {i + 1}: {MenuSelectionTimeS[i]} times selected");
+                Console.WriteLine($"The Option {Menu.ApplicationMainMenue[i]} is selected {MenuSelectionTimeS[i]} times ");
             }
         }
 
