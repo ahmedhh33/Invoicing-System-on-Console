@@ -57,11 +57,12 @@ namespace Invoicing_System_on_Console
                             ReportAllInvoices();
                             break;
                         case 6:
+                            SerachForInvoice();
                             break;
                         case 7:
                             break;
                         case 8:
-                        Console.WriteLine("Are you sure you want to exit? (Y/N)");
+                        Console.Write("Are you sure you want to exit? (Y/N)   ");
                         string response = Console.ReadLine().ToUpper();
                         if (response == "Y")
                         {
@@ -170,8 +171,8 @@ namespace Invoicing_System_on_Console
         private int GetMenuChoice(int Maximumchoice)
         {
             // this function check for the menu list and ask user to enter the choice
-            Console.WriteLine("What functions you want?");
-            Console.WriteLine("Please inter your choice");
+            Console.WriteLine("What functions you want? ");
+            Console.Write("Please inter your choice =>  ");
             //int choice;
             //int userchoice = int.Parse(Console.ReadLine());
             //while( userchoice <1 || userchoice>Maximumchoice)
@@ -179,7 +180,8 @@ namespace Invoicing_System_on_Console
             while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > Maximumchoice)
             {
                 Console.WriteLine("You Entered invalid choice number! .");
-                Console.WriteLine("Please inter your choice again .");
+                Console.Write("Please inter your choice again =>  ");
+                
 
             }
             return choice;
@@ -224,15 +226,18 @@ namespace Invoicing_System_on_Console
         {
             try
             {
-                Console.WriteLine("Enter the Item ID : ");
+                Console.Write("Enter the Item ID : ");
+                
                 int itemID = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the Item Name : ");
+                Console.Write("Enter the Item Name : ");
+                
                 string itemName = Console.ReadLine();
-                Console.WriteLine("Enter the Item Price : ");
+                Console.Write("Enter the Item Price : ");
+                
                 decimal ItemPrice = decimal.Parse(Console.ReadLine());
 
                 //adding new items to the constructor
-                var newitem = new SingleItem(itemID, itemName, ItemPrice);
+                SingleItem newitem = new SingleItem(itemID, itemName, ItemPrice);
                 // adding this items to the list of items in the shop class
                 shop.Items.Add(newitem);
                 SaveData();
@@ -248,7 +253,8 @@ namespace Invoicing_System_on_Console
         {
             try
             {
-                Console.WriteLine("Enter the item ID that you want to be delete:");
+                Console.Write("Enter the item ID that you want to be delete:    ");
+                
                 int itemID = int.Parse(Console.ReadLine());
                 // search for the item in the items list in shop class
                 var RemovingItem = shop.Items.Find(x => x.ItemID == itemID);
@@ -274,13 +280,15 @@ namespace Invoicing_System_on_Console
         {
             try
             {
-                Console.WriteLine("Please enter the ID of items that you want to change its price: ");
+                Console.Write("Please enter the ID of items that you want to change its price: ");
+                
                 int itemID = int.Parse(Console.ReadLine());
 
                 var changedItem = shop.Items.Find(x => x.ItemID == itemID);
                 if (changedItem != null)
                 {
-                    Console.WriteLine("Enter the new item price :");
+                    Console.Write("Enter the new item price :");
+                    
                     decimal newprice = decimal.Parse(Console.ReadLine());
                     changedItem.UnitPrice = newprice;
                     SaveData();
@@ -308,16 +316,16 @@ namespace Invoicing_System_on_Console
 
         private void CreatNewInvoice()
         {
-            Console.WriteLine("Please enter custumer full name :");
+            Console.Write("Please enter custumer full name :    ");
             string CustumerName = Console.ReadLine();
-            Console.WriteLine("Please enter custumer Phone number :");
+            Console.Write("Please enter custumer Phone number : ");
             string CustumerPhone = Console.ReadLine();
-            Console.WriteLine("Enter the InvoiceNumber");
+            Console.Write("Enter the InvoiceNumber");
             string Invicenumber = Console.ReadLine();
 
             Invoice CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
 
-            Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish):");
+            Console.Write("Add items to the invoice press Enter after each item ID, enter 0 to finish): ");
             while (true)
             {
                 //entering the item id
@@ -332,7 +340,7 @@ namespace Invoicing_System_on_Console
                 }
                 else
                 {
-                    Console.WriteLine("Enter the Quantity of this item : ");
+                    Console.Write("Enter the Quantity of this item : ");
                     int itemQuantity = int.Parse(Console.ReadLine());
                     //creating object of invoice items class and thake the information of this from shope item class using shop.find
                     InvoiceItem invoiceitems = new InvoiceItem(itemOnShop.ItemID, itemOnShop.ItemName, itemOnShop.UnitPrice, itemQuantity);
@@ -345,7 +353,7 @@ namespace Invoicing_System_on_Console
 
                 }
             }
-            Console.WriteLine("Enter the Paid amount : ");
+            Console.Write("Enter the Paid amount : ");
             decimal paidamount = decimal.Parse(Console.ReadLine());
             CreatingInvoice.PaidAmount = paidamount;
             shop.Invoices.Add(CreatingInvoice);
@@ -372,13 +380,36 @@ namespace Invoicing_System_on_Console
         private void ReportAllInvoices()
         {
             Console.WriteLine("===>>Report Invoices Information<<===");
-            Console.WriteLine("InvoiceNumber   InvoiceDate    CustomerName   NumberOfItems   TotalAmount  Balance");
+            Console.WriteLine("InvoiceNumber   InvoiceDate      CustomerName   NumberOfItems   TotalAmount      Balance");
             foreach (var invoice in shop.Invoices)
             {
-                Console.WriteLine($"{invoice.InvoiceNumber} {invoice.InvoiceDate}   {invoice.CustomerFullName}  {invoice.Items.Count}   {invoice.TotalAmount}   {invoice.Balance}");
+                Console.WriteLine($"{invoice.InvoiceNumber}          {invoice.InvoiceDate}       {invoice.CustomerFullName}          {invoice.Items.Count}           {invoice.TotalAmount}           {invoice.Balance}");
             }
 
         }
+
+        private void SerachForInvoice()
+        {
+            Console.WriteLine("Enter the Invoice Number to show it is details");
+            string InvoiceNumberInput = Console.ReadLine();
+
+            var InvoiceSearsh = shop.Invoices.Find(x=>x.InvoiceNumber == InvoiceNumberInput);
+            if (InvoiceSearsh != null)
+            {
+                Console.WriteLine($"InvoiceNumber: {InvoiceSearsh.InvoiceNumber} InvoiceDate : {InvoiceSearsh.InvoiceDate}  CustomerName : {InvoiceSearsh.CustomerFullName}  NumberOfItems : {InvoiceSearsh.Items.Count}  TotalAmount: {InvoiceSearsh.TotalAmount}  Balance : {InvoiceSearsh.Balance}");
+                Console.WriteLine("The Items in this Invoice are: ");
+                foreach(var items in InvoiceSearsh.Items)
+                {
+                    Console.WriteLine($"ItemId: {items.ItemID} ItemName: {items.ItemName} UnitPrice: {items.UnitPrice} Quantity: {items.Quantity} TotalPrice: {items.TotalPrice}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"The item with number {InvoiceNumberInput}");
+            }
+        }
+
+
 
     }
 }

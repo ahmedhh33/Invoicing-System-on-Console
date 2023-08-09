@@ -19,26 +19,7 @@
     }
   ],
   "Invoices": [
-    {
-      "InvoiceNumber": "21",
-      "CustomerFullName": "qwq",
-      "PhoneNumber": "2322",
-      "InvoiceDate": "2023-08-09T10:38:37.9055053+04:00",
-      "Items": [],
-      "TotalAmount": 0.0,
-      "PaidAmount": 0.0,
-      "Balance": 0.0
-    },
-    {
-      "InvoiceNumber": "89",
-      "CustomerFullName": "agmed",
-      "PhoneNumber": "9232234",
-      "InvoiceDate": "2023-08-09T10:51:48.6436601+04:00",
-      "Items": [],
-      "TotalAmount": 0.0,
-      "PaidAmount": 0.0,
-      "Balance": 0.0
-    },
+    
     {
       "InvoiceNumber": "323",
       "CustomerFullName": "saleh",
