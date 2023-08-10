@@ -87,7 +87,7 @@ namespace Invoicing_System_on_Console
         {
             try
             {
-                Console.Write("Enter the InvoiceNumber");
+                Console.Write("Enter the InvoiceNumber: ");
                 string Invicenumber = Console.ReadLine();
                 return Invicenumber;
             }
@@ -124,6 +124,34 @@ namespace Invoicing_System_on_Console
                 Console.WriteLine("Invalid input exceptions the input must be decimal " + ex.Message);
             }
             return PaidAmount();
+        }
+
+        public void ExitFunction()
+        {
+            try
+            {
+                Console.Write("Are you sure you want to exit? (Y/N)   ");
+                string response = Console.ReadLine().ToUpper();
+                if (response == "Y")
+                {
+                    Environment.Exit(0);
+                }
+                else if (response == "N")
+                {
+                    ShopApplication shopApplication = new ShopApplication();
+                    shopApplication.ApplicationMainMenu();
+                }
+                else
+                {
+                    Console.WriteLine("You intered invalid choice");
+                }
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Invalid input exceptions the input must be char " + ex.Message);
+                 
+            }
+            ExitFunction();
+
         }
     }
 }

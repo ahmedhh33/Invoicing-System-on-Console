@@ -52,26 +52,13 @@ namespace Invoicing_System_on_Console
                             ReportAllInvoices();
                             break;
                         case 6:
-                            SerachForInvoice();
+                            SerachForInvoice(UserInputs.InvoiceNumber());
                             break;
                         case 7:
                             ProgramStatics();
                             break;
                         case 8:
-                        Console.Write("Are you sure you want to exit? (Y/N)   ");
-                        string response = Console.ReadLine().ToUpper();
-                        if (response == "Y")
-                        {
-                            Environment.Exit(0);
-                        }
-                        else if (response == "N")
-                        {
-                            ApplicationMainMenu();
-                        }
-                        else
-                        {
-                            Console.WriteLine("You intered invalid choice");
-                        }
+                            UserInputs.ExitFunction();
                         return;
 
                     }
@@ -295,7 +282,7 @@ namespace Invoicing_System_on_Console
 
             Invoice CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
 
-            Console.Write("Add items to the invoice press Enter after each item ID, enter 0 to finish): ");
+            Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish): ");
             while (true)
             {
                 int itemID =UserInputs.AddIdtemsUserInput();
@@ -316,7 +303,7 @@ namespace Invoicing_System_on_Console
                     //invoice.Items.Add(invoiceitems);
 
                     CreatingInvoice.Items.Add(invoiceitems);
-                    Console.WriteLine("Add items to the invoice and press Enter after each item ID, enter 0 to finish):");
+                    //Console.WriteLine("Add items to the invoice and press Enter after each item ID, enter 0 to finish):");
 
                 }
             }
@@ -354,12 +341,11 @@ namespace Invoicing_System_on_Console
 
         }
 
-        private void SerachForInvoice()
+        private void SerachForInvoice(string InvoiceNumberInput)
         {
             Console.WriteLine("===>>Serach For Invoice<<===");
 
-            Console.WriteLine("Enter the Invoice Number to show it is details");
-            string InvoiceNumberInput = Console.ReadLine();
+            
 
             var InvoiceSearsh = shop.Invoices.Find(x=>x.InvoiceNumber == InvoiceNumberInput);
             if (InvoiceSearsh != null)
