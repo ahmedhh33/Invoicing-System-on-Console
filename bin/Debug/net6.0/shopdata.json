@@ -11,6 +11,16 @@
       "ItemID": 343,
       "ItemName": "baking soda",
       "UnitPrice": 3.0
+    },
+    {
+      "ItemID": 222,
+      "ItemName": "Eggs",
+      "UnitPrice": 2.0
+    },
+    {
+      "ItemID": 112,
+      "ItemName": "KHooKH",
+      "UnitPrice": 4.0
     }
   ],
   "Invoices": [

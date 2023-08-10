@@ -21,6 +21,7 @@ namespace Invoicing_System_on_Console
             LoadData();
         }
         Menu Menu = new Menu();
+        UserInputs UserInputs = new UserInputs();
 
         int[] MenuSelectionTimeS = new int[8];//number of main menu items array and it start from 0
 
@@ -180,12 +181,13 @@ namespace Invoicing_System_on_Console
             Console.WriteLine("-|-|-|-|-|-|- Manage Shop Items Menu -|-|-|-|-|-|-");
             while (true)
             {
-                Menu.Show(Menu.ManageShopItemsMenue);
+                Menu.Show(Menu.ManageShopItemsMenue);  
                 int choice = GetMenuChoice(5);
                 switch (choice)
                 {
                     case 1:
-                        AddItems();
+                        
+                        AddItems(UserInputs.AddIdtemsUserInput(),UserInputs.AddNameItemsUserInput(),UserInputs.AddPriceItemsUserInput());
                         break;
                     case 2:
                         DeleteItems();
@@ -204,19 +206,11 @@ namespace Invoicing_System_on_Console
             
         }
 
-        private void AddItems()
+        private void AddItems(int itemID, string itemName, decimal ItemPrice)
         {
             try
             {
-                Console.Write("Enter the Item ID : ");
                 
-                int itemID = int.Parse(Console.ReadLine());
-                Console.Write("Enter the Item Name : ");
-                
-                string itemName = Console.ReadLine();
-                Console.Write("Enter the Item Price : ");
-                
-                decimal ItemPrice = decimal.Parse(Console.ReadLine());
 
                 //adding new items to the constructor
                 SingleItem newitem = new SingleItem(itemID, itemName, ItemPrice);
