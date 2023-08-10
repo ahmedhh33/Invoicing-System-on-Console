@@ -41,6 +41,49 @@
       "TotalAmount": 23.0,
       "PaidAmount": 45.0,
       "Balance": 22.0
+    },
+    {
+      "InvoiceNumber": "1232",
+      "CustomerFullName": "Osama",
+      "PhoneNumber": "9889889",
+      "InvoiceDate": "2023-08-10T12:14:53.8212333+04:00",
+      "Items": [
+        {
+          "ItemID": 112,
+          "ItemName": "KHooKH",
+          "UnitPrice": 4.0,
+          "Quantity": 5,
+          "TotalPrice": 20.0
+        },
+        {
+          "ItemID": 343,
+          "ItemName": "baking soda",
+          "UnitPrice": 3.0,
+          "Quantity": 5,
+          "TotalPrice": 15.0
+        }
+      ],
+      "TotalAmount": 35.0,
+      "PaidAmount": 60.0,
+      "Balance": 25.0
+    },
+    {
+      "InvoiceNumber": "2213",
+      "CustomerFullName": "sami",
+      "PhoneNumber": "9332322",
+      "InvoiceDate": "2023-08-10T12:26:48.4894869+04:00",
+      "Items": [
+        {
+          "ItemID": 112,
+          "ItemName": "KHooKH",
+          "UnitPrice": 4.0,
+          "Quantity": 3,
+          "TotalPrice": 12.0
+        }
+      ],
+      "TotalAmount": 12.0,
+      "PaidAmount": 89.0,
+      "Balance": 77.0
     }
   ]
 }

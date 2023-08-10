@@ -43,7 +43,7 @@ namespace Invoicing_System_on_Console
                             ManageShopItemsMenu();
                             break;
                         case 3:
-                            CreatNewInvoice();
+                            CreatNewInvoice(UserInputs.CustomerName(),UserInputs.CustomerPhone(),UserInputs.InvoiceNumber(),UserInputs.PaidAmount());
                             break;
                         case 4:
                             ReportStatics();
@@ -190,10 +190,10 @@ namespace Invoicing_System_on_Console
                         AddItems(UserInputs.AddIdtemsUserInput(),UserInputs.AddNameItemsUserInput(),UserInputs.AddPriceItemsUserInput());
                         break;
                     case 2:
-                        DeleteItems();
+                        DeleteItems(UserInputs.AddIdtemsUserInput());
                         break;
                     case 3:
-                        ChangeItemPrice();
+                        ChangeItemPrice(UserInputs.AddIdtemsUserInput(), UserInputs.AddPriceItemsUserInput());
                         break;
                     case 4:
                         ReportAllItems();
@@ -225,13 +225,13 @@ namespace Invoicing_System_on_Console
             }
         }
 
-        private void DeleteItems()
+        private void DeleteItems(int itemID)
         {
             try
             {
-                Console.Write("Enter the item ID that you want to be delete:    ");
+                //Console.Write("Enter the item ID that you want to be delete:    ");
                 
-                int itemID = int.Parse(Console.ReadLine());
+                //int itemID = int.Parse(Console.ReadLine());
                 // search for the item in the items list in shop class
                 var RemovingItem = shop.Items.Find(x => x.ItemID == itemID);
                 if (RemovingItem != null)
@@ -252,20 +252,20 @@ namespace Invoicing_System_on_Console
             }
         }
 
-        private void ChangeItemPrice()
+        private void ChangeItemPrice(int itemID,decimal newprice)
         {
             try
             {
-                Console.Write("Please enter the ID of items that you want to change its price: ");
+                //Console.Write("Please enter the ID of items that you want to change its price: ");
                 
-                int itemID = int.Parse(Console.ReadLine());
+                //int itemID = int.Parse(Console.ReadLine());
 
                 var changedItem = shop.Items.Find(x => x.ItemID == itemID);
                 if (changedItem != null)
                 {
-                    Console.Write("Enter the new item price :");
+                    //Console.Write("Enter the new item price :");
                     
-                    decimal newprice = decimal.Parse(Console.ReadLine());
+                    //decimal newprice = decimal.Parse(Console.ReadLine());
                     changedItem.UnitPrice = newprice;
                     SaveData();
                     Console.WriteLine("item price updated succesfuly");
@@ -290,23 +290,15 @@ namespace Invoicing_System_on_Console
             }
         }
 
-        private void CreatNewInvoice()
+        private void CreatNewInvoice(string CustumerName, string CustumerPhone, string Invicenumber, decimal paidamount)
         {
-            Console.Write("Please enter custumer full name :    ");
-            string CustumerName = Console.ReadLine();
-            Console.Write("Please enter custumer Phone number : ");
-            string CustumerPhone = Console.ReadLine();
-            Console.Write("Enter the InvoiceNumber");
-            string Invicenumber = Console.ReadLine();
 
             Invoice CreatingInvoice = new Invoice(Invicenumber, CustumerName, CustumerPhone, DateTime.Now, new List<InvoiceItem>());
 
             Console.Write("Add items to the invoice press Enter after each item ID, enter 0 to finish): ");
             while (true)
             {
-                //entering the item id
-                int itemID = int.Parse(Console.ReadLine());
-
+                int itemID =UserInputs.AddIdtemsUserInput();
                 if (itemID == 0) { break; }
                 //searshing for this item in items list of th shop class to find it is informations
                 var itemOnShop = shop.Items.Find(x => x.ItemID == itemID);
@@ -316,8 +308,7 @@ namespace Invoicing_System_on_Console
                 }
                 else
                 {
-                    Console.Write("Enter the Quantity of this item : ");
-                    int itemQuantity = int.Parse(Console.ReadLine());
+                    int itemQuantity = UserInputs.ItemQuantity();
                     //creating object of invoice items class and thake the information of this from shope item class using shop.find
                     InvoiceItem invoiceitems = new InvoiceItem(itemOnShop.ItemID, itemOnShop.ItemName, itemOnShop.UnitPrice, itemQuantity);
                     // now add this new information to invoice class
@@ -325,12 +316,11 @@ namespace Invoicing_System_on_Console
                     //invoice.Items.Add(invoiceitems);
 
                     CreatingInvoice.Items.Add(invoiceitems);
-                    Console.WriteLine("Add items to the invoice press Enter after each item ID, enter 0 to finish):");
+                    Console.WriteLine("Add items to the invoice and press Enter after each item ID, enter 0 to finish):");
 
                 }
             }
-            Console.Write("Enter the Paid amount : ");
-            decimal paidamount = decimal.Parse(Console.ReadLine());
+            
             CreatingInvoice.PaidAmount = paidamount;
             shop.Invoices.Add(CreatingInvoice);
             SaveData();
